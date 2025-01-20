@@ -79,7 +79,7 @@ public final class RelicRushPlugin extends JavaPlugin {
                 relicSpawn.getSpawnedItem().remove();
         });
 
-        scoreboardLibrary.close();
         WaitingScoreboard.getSidebar().close();
+        scoreboardLibrary.close();
     }
 }
