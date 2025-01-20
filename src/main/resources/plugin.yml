@@ -1,0 +1,15 @@
+name: MinigameByAI
+version: '1.0.0-SNAPSHOT'
+main: dev.ethans.relicrush.RelicRushPlugin
+api-version: '1.21'
+
+commands:
+  minigamereload:
+    description: Reload the plugin
+    usage: /minigamereload
+    permission: minigame.reload
+
+  relicspawn:
+    description: Set location as a relic spawn
+    usage: /spawnrelic <common|rare|golden>
+    permission: minigame.relicspawn

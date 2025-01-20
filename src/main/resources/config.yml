@@ -1,0 +1,63 @@
+General:
+  Max_Players: 8
+  Min_Players: 2
+  Teams: 2
+  Game_Duration: 8
+  Golden_Relic_Seconds_To_Win: 60
+  Common_Relic_Score: 1
+  Rare_Relic_Score: 3
+  Max_Relics_Per_Player: 5
+  Respawn_Delay: 10
+
+Spawns:
+  1:
+    World: "world"
+    X: 0
+    Y: 64
+    Z: 0
+  2:
+    World: "world"
+    X: 0
+    Y: 64
+    Z: 0
+  3:
+    World: "world"
+    X: 0
+    Y: 64
+    Z: 0
+  4:
+    World: "world"
+    X: 0
+    Y: 64
+    Z: 0
+
+Teams:
+  Random: true
+  1:
+    Name: "Red"
+    Players:
+      - "96347d29-a872-401c-8c83-7d18677b35b3"
+      - "350a9a78-2906-415e-b76d-1f2436872df2"
+      - "2a135482-0c03-482b-981b-79a8b112a303"
+      - "94e22d3c-1248-4143-85f2-c8fe970a4276"
+  2:
+    Name: "Blue"
+    Players:
+      - "0a734fe4-d4a5-4905-8ec0-dd70c6dd9cfe"
+      - "3877f9a9-a285-4ed7-bb6d-075c18a68900"
+      - "5d60187d-7a0b-46d8-9c9f-dadf9da9d223"
+      - "2aef3d12-ca41-456b-9a57-1f0d0da2718e"
+  3:
+    Name: "Green"
+    Players:
+      - "f3b3b3b3-3b3b-3b3b-3b3b-3b3b3b3b3b3b"
+      - "f3b3b3b3-3b3b-3b3b-3b3b-3b3b3b3b3b3b"
+      - "f3b3b3b3-3b3b-3b3b-3b3b-3b3b3b3b3b3b"
+      - "f3b3b3b3-3b3b-3b3b-3b3b-3b3b3b3b3b3b"
+  4:
+    Name: "Yellow"
+    Players:
+      - "f3b3b3b3-3b3b-3b3b-3b3b-3b3b3b3b3b3b"
+      - "f3b3b3b3-3b3b-3b3b-3b3b-3b3b3b3b3b3b"
+      - "f3b3b3b3-3b3b-3b3b-3b3b-3b3b3b3b3b3b"
+      - "f3b3b3b3-3b3b-3b3b-3b3b-3b3b3b3b3b3b"
