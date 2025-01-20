@@ -5,6 +5,7 @@ import dev.ethans.relicrush.commands.RelicSpawnCommand;
 import dev.ethans.relicrush.commands.ReloadCommand;
 import dev.ethans.relicrush.config.MinigameConfig;
 import dev.ethans.relicrush.relic.RelicManager;
+import dev.ethans.relicrush.scoreboard.WaitingScoreboard;
 import dev.ethans.relicrush.state.base.GameState;
 import dev.ethans.relicrush.state.base.ScheduledStateSeries;
 import dev.ethans.relicrush.state.ingame.InGameState;
@@ -12,6 +13,9 @@ import dev.ethans.relicrush.state.init.InitState;
 import dev.ethans.relicrush.state.waiting.WaitingState;
 import lombok.Getter;
 import lombok.Setter;
+import net.megavex.scoreboardlibrary.api.ScoreboardLibrary;
+import net.megavex.scoreboardlibrary.api.exception.NoPacketAdapterAvailableException;
+import net.megavex.scoreboardlibrary.api.noop.NoopScoreboardLibrary;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class RelicRushPlugin extends JavaPlugin {
@@ -32,6 +36,9 @@ public final class RelicRushPlugin extends JavaPlugin {
     private final Gson gson = new Gson();
 
     @Getter
+    ScoreboardLibrary scoreboardLibrary;
+
+    @Getter
     @Setter
     private GameState currentState;
 
@@ -43,6 +50,16 @@ public final class RelicRushPlugin extends JavaPlugin {
         minigameConfig.load();
         relicManager = new RelicManager();
         relicManager.loadRelicSpawns();
+
+        try {
+            scoreboardLibrary = ScoreboardLibrary.loadScoreboardLibrary(this);
+        } catch (NoPacketAdapterAvailableException e) {
+            scoreboardLibrary = new NoopScoreboardLibrary();
+            getLogger().severe("No scoreboard packet adapter available!");
+            getServer().getPluginManager().disablePlugin(this);
+        }
+
+        WaitingScoreboard.createScoreboard();
 
         getCommand("minigamereload").setExecutor(new ReloadCommand());
         getCommand("relicspawn").setExecutor(new RelicSpawnCommand());
@@ -61,5 +78,8 @@ public final class RelicRushPlugin extends JavaPlugin {
             if (relicSpawn.getSpawnedItem() != null)
                 relicSpawn.getSpawnedItem().remove();
         });
+
+        scoreboardLibrary.close();
+        WaitingScoreboard.getSidebar().close();
     }
 }

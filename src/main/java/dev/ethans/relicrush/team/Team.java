@@ -17,5 +17,8 @@ public class Team {
     private final List<Player> players;
 
     @Setter
+    private int score;
+
+    @Setter
     private Location spawnLocation;
 }

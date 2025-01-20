@@ -90,5 +90,29 @@
             <artifactId>FSMgasm</artifactId>
             <version>bd1b5057a3</version>
         </dependency>
+        <dependency>
+            <groupId>net.megavex</groupId>
+            <artifactId>scoreboard-library-api</artifactId>
+            <version>2.2.2</version>
+        </dependency>
+        <dependency>
+            <groupId>net.megavex</groupId>
+            <artifactId>scoreboard-library-implementation</artifactId>
+            <version>2.2.2</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>net.megavex</groupId>
+            <artifactId>scoreboard-library-modern</artifactId>
+            <version>2.2.2</version>
+            <scope>runtime</scope>
+            <!-- For a Mojang mapped variant, uncomment line below (only use if you know what you're doing!): -->
+            <!-- <classifier>mojmap</classifier> -->
+        </dependency>
+        <dependency>
+            <groupId>net.kyori</groupId>
+            <artifactId>adventure-platform-bukkit</artifactId>
+            <version>4.0.1</version>
+        </dependency>
     </dependencies>
 </project>
