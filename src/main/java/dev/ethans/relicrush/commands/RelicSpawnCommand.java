@@ -27,7 +27,7 @@ public class RelicSpawnCommand implements CommandExecutor {
         if (!cmd.getName().equalsIgnoreCase("relicspawn"))
             return true;
 
-        if (!sender.hasPermission("minigame.relicspawn")) {
+        if (!sender.hasPermission("relicrush.relicspawn")) {
             sender.sendMessage(ChatColor.RED + "You do not have permission to use this command.");
             return true;
         }

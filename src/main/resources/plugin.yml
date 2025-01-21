@@ -4,12 +4,17 @@ main: dev.ethans.relicrush.RelicRushPlugin
 api-version: '1.21'
 
 commands:
-  minigamereload:
+  relicreload:
     description: Reload the plugin
     usage: /minigamereload
-    permission: minigame.reload
+    permission: relicrush.reload
 
   relicspawn:
     description: Set location as a relic spawn
     usage: /spawnrelic <common|rare|golden>
-    permission: minigame.relicspawn
+    permission: relicrush.relicspawn
+
+  relicdeposit:
+    description: Mark a location as a relic deposit
+    usage: /relicdeposit <team>
+    permission: relicrush.relicdeposit

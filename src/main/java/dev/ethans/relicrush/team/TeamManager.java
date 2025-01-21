@@ -71,4 +71,8 @@ public class TeamManager {
     public static Team getTeam(Player player) {
         return teams.stream().filter(team -> team.getPlayers().contains(player)).findFirst().orElse(null);
     }
+
+    public static boolean teamExists(String name) {
+        return teams.stream().anyMatch(team -> team.getName().equalsIgnoreCase(name));
+    }
 }

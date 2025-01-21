@@ -13,10 +13,10 @@ public class ReloadCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        if (!cmd.getName().equalsIgnoreCase("minigamereload"))
+        if (!cmd.getName().equalsIgnoreCase("relicreload"))
             return true;
 
-        if (!sender.hasPermission("minigame.reload")) {
+        if (!sender.hasPermission("relicrush.reload")) {
             sender.sendMessage(ChatColor.RED + "You do not have permission to use this command.");
             return true;
         }

@@ -1,6 +1,7 @@
 package dev.ethans.relicrush;
 
 import com.google.gson.Gson;
+import dev.ethans.relicrush.commands.RelicDepositCommand;
 import dev.ethans.relicrush.commands.RelicSpawnCommand;
 import dev.ethans.relicrush.commands.ReloadCommand;
 import dev.ethans.relicrush.config.MinigameConfig;
@@ -61,8 +62,9 @@ public final class RelicRushPlugin extends JavaPlugin {
 
         WaitingScoreboard.createScoreboard();
 
-        getCommand("minigamereload").setExecutor(new ReloadCommand());
+        getCommand("relicreload").setExecutor(new ReloadCommand());
         getCommand("relicspawn").setExecutor(new RelicSpawnCommand());
+        getCommand("relicdeposit").setExecutor(new RelicDepositCommand());
 
         fsm = new ScheduledStateSeries(this);
         fsm.add(new WaitingState(this));

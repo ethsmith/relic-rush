@@ -12,7 +12,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerMoveEvent;
 
-public class RelicDepoListener implements Listener {
+public class RelicDepositListener implements Listener {
 
     private static final RelicRushPlugin plugin = RelicRushPlugin.getInstance();
 
