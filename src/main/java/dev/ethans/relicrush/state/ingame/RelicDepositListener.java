@@ -2,6 +2,7 @@ package dev.ethans.relicrush.state.ingame;
 
 import dev.ethans.relicrush.RelicRushPlugin;
 import dev.ethans.relicrush.relic.Relic;
+import dev.ethans.relicrush.relic.RelicDeposit;
 import dev.ethans.relicrush.team.Team;
 import dev.ethans.relicrush.team.TeamManager;
 import org.bukkit.ChatColor;
@@ -23,7 +24,11 @@ public class RelicDepositListener implements Listener {
 
         if (team == null)   return;
 
-        // TODO Check if player is in their team relic depo
+        Team playerTeam = TeamManager.getTeam(player);
+        RelicDeposit relicDeposit = plugin.getRelicManager().getRelicDeposits().get(playerTeam.getName());
+
+        if (relicDeposit == null) return;
+        if (relicDeposit.getCenter().distance(player.getLocation()) > 0.5) return;
 
         player.getInventory().forEach(item -> {
             if (item.getItemMeta() == null) return;
