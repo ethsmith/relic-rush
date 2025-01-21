@@ -43,7 +43,8 @@ public class RelicDepositCommand implements CommandExecutor {
             return true;
         }
 
-        String teamName = args[0];
+        // concat args to string
+        String teamName = String.join(" ", args);
         RelicDeposit relicDeposit = new RelicDeposit(teamName, player.getLocation());
         plugin.getRelicManager().getRelicDeposits().put(teamName, relicDeposit);
         player.sendMessage(ChatColor.GREEN + "Relic spawn created!");
