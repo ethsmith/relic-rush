@@ -51,6 +51,7 @@ public final class RelicRushPlugin extends JavaPlugin {
         minigameConfig.load();
         relicManager = new RelicManager();
         relicManager.loadRelicSpawns();
+        relicManager.loadRelicDeposits();
 
         try {
             scoreboardLibrary = ScoreboardLibrary.loadScoreboardLibrary(this);
