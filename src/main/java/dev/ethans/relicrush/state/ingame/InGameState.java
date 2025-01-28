@@ -3,6 +3,7 @@ package dev.ethans.relicrush.state.ingame;
 import dev.ethans.relicrush.RelicRushPlugin;
 import dev.ethans.relicrush.messages.BossBarMessage;
 import dev.ethans.relicrush.state.base.GameState;
+import dev.ethans.relicrush.team.Team;
 import dev.ethans.relicrush.team.TeamManager;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,6 +13,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
 
 import java.time.Duration;
+import java.util.Comparator;
 
 public class InGameState extends GameState {
 
@@ -40,6 +42,7 @@ public class InGameState extends GameState {
     protected void onStart() {
         register(new PlayerDeathListener(this));
         register(new ItemPickupListener(this));
+        register(new RelicDepositListener());
 
         TeamManager.getTeams().forEach(team -> {
             team.getPlayers().forEach(player -> {
@@ -74,7 +77,14 @@ public class InGameState extends GameState {
         if (goldenRelicWin) {
             broadcast(ChatColor.GREEN + "The game has ended! " + TeamManager.getTeam(playerWithRelic).getName() + " has won with the golden relic!");
         } else {
-            // TODO: Announce winner based on points
+            Team teamWithMostPoints = TeamManager.getTeams().stream().max(Comparator.comparingInt(Team::getScore)).orElse(null);
+
+            if (teamWithMostPoints == null) {
+                broadcast(ChatColor.RED + "The game has ended! No team has won.");
+                return;
+            }
+
+            broadcast(ChatColor.GREEN + "The game has ended! " + teamWithMostPoints.getName() + " has won with " + teamWithMostPoints.getScore() + " points!");
         }
     }
 }
