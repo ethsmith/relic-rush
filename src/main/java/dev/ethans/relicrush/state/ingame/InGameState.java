@@ -77,6 +77,7 @@ public class InGameState extends GameState {
         if (goldenRelicWin) {
             broadcast(ChatColor.GREEN + "The game has ended! " + TeamManager.getTeam(playerWithRelic).getName() + " has won with the golden relic!");
         } else {
+            // TODO Using this for a small community even so not too worried about a tie, but can be handled later
             Team teamWithMostPoints = TeamManager.getTeams().stream().max(Comparator.comparingInt(Team::getScore)).orElse(null);
 
             if (teamWithMostPoints == null) {
