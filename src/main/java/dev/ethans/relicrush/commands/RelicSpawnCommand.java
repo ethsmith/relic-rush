@@ -61,11 +61,15 @@ public class RelicSpawnCommand implements CommandExecutor {
         plugin.getRelicManager().getRelicSpawns().add(relicSpawn);
         player.sendMessage(ChatColor.GREEN + "Relic spawn created!");
 
-        try(FileWriter writer = new FileWriter(plugin.getDataFolder().getAbsolutePath() + "/relics/" + UUID.randomUUID() + ".json")) {
+        FileWriter writer = null;
+        try {
             File file = new File(plugin.getDataFolder().getAbsolutePath() + "/relics/");
             if (!file.exists())
                 file.mkdirs();
+
+            writer = new FileWriter(plugin.getDataFolder().getAbsolutePath() + "/relics/" + UUID.randomUUID() + ".json");
             plugin.getGson().toJson(relicSpawn, writer);
+            writer.close();
         } catch (Exception e) {
             plugin.getLogger().warning("Failed to save relic spawn to file.");
             e.printStackTrace();

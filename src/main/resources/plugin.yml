@@ -1,4 +1,4 @@
-name: MinigameByAI
+name: RelicRush
 version: '1.0.0-SNAPSHOT'
 main: dev.ethans.relicrush.RelicRushPlugin
 api-version: '1.21'

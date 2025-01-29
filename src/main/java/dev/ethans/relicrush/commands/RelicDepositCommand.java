@@ -49,11 +49,15 @@ public class RelicDepositCommand implements CommandExecutor {
         plugin.getRelicManager().getRelicDeposits().put(teamName, relicDeposit);
         player.sendMessage(ChatColor.GREEN + "Relic spawn created!");
 
-        try(FileWriter writer = new FileWriter(plugin.getDataFolder().getAbsolutePath() + "/deposits/" + UUID.randomUUID() + ".json")) {
+        FileWriter writer = null;
+        try {
             File file = new File(plugin.getDataFolder().getAbsolutePath() + "/deposits/");
             if (!file.exists())
                 file.mkdirs();
+
+            writer = new FileWriter(plugin.getDataFolder().getAbsolutePath() + "/deposits/" + UUID.randomUUID() + ".json");
             plugin.getGson().toJson(relicDeposit, writer);
+            writer.close();
         } catch (Exception e) {
             plugin.getLogger().warning("Failed to save relic deposit to file.");
             e.printStackTrace();
