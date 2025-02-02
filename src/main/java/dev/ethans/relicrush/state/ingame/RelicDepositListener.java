@@ -13,6 +13,8 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerMoveEvent;
 
+import java.util.concurrent.atomic.AtomicBoolean;
+
 public class RelicDepositListener implements Listener {
 
     private static final RelicRushPlugin plugin = RelicRushPlugin.getInstance();
@@ -30,6 +32,7 @@ public class RelicDepositListener implements Listener {
         if (relicDeposit == null) return;
         if (relicDeposit.getCenter().distance(player.getLocation()) > 0.5) return;
 
+        AtomicBoolean hasRelic = new AtomicBoolean(false);
         player.getInventory().forEach(item -> {
             if (item == null) return;
             if (item.getItemMeta() == null) return;
@@ -41,6 +44,7 @@ public class RelicDepositListener implements Listener {
 
             player.getInventory().remove(item);
             player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1, 1);
+            hasRelic.set(true);
 
             if (Relic.RARE.getItem().isSimilar(item))
                 team.setScore(team.getScore() + plugin.getMinigameConfig().getRareRelicScore());
@@ -49,6 +53,7 @@ public class RelicDepositListener implements Listener {
                 team.setScore(team.getScore() + plugin.getMinigameConfig().getCommonRelicScore());
         });
 
-        player.sendMessage(ChatColor.GREEN + "Relic(s) deposited for your team!");
+        if (hasRelic.get())
+            player.sendMessage(ChatColor.GREEN + "Relic(s) deposited for your team!");
     }
 }
