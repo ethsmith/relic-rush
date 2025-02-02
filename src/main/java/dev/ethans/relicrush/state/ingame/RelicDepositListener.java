@@ -31,6 +31,7 @@ public class RelicDepositListener implements Listener {
         if (relicDeposit.getCenter().distance(player.getLocation()) > 0.5) return;
 
         player.getInventory().forEach(item -> {
+            if (item == null) return;
             if (item.getItemMeta() == null) return;
 
             if (!item.getItemMeta().getPersistentDataContainer()

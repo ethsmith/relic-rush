@@ -43,6 +43,7 @@ public class InGameState extends GameState {
         register(new PlayerDeathListener(this));
         register(new ItemPickupListener(this));
         register(new RelicDepositListener());
+        register(new RelicDamageListener());
 
         TeamManager.getTeams().forEach(team -> {
             team.getPlayers().forEach(player -> {
