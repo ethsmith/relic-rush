@@ -3,6 +3,7 @@ package dev.ethans.relicrush.state.ingame;
 import dev.ethans.relicrush.RelicRushPlugin;
 import dev.ethans.relicrush.messages.BossBarMessage;
 import dev.ethans.relicrush.state.base.GameState;
+import dev.ethans.relicrush.state.shared.BlockListener;
 import dev.ethans.relicrush.team.Team;
 import dev.ethans.relicrush.team.TeamManager;
 import lombok.Getter;
@@ -44,6 +45,7 @@ public class InGameState extends GameState {
         register(new ItemPickupListener(this));
         register(new RelicDepositListener());
         register(new RelicDamageListener());
+        register(new BlockListener());
 
         TeamManager.getTeams().forEach(team -> {
             team.getPlayers().forEach(player -> {

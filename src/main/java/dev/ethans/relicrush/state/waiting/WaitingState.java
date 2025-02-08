@@ -2,6 +2,7 @@ package dev.ethans.relicrush.state.waiting;
 
 import dev.ethans.relicrush.RelicRushPlugin;
 import dev.ethans.relicrush.state.base.GameState;
+import dev.ethans.relicrush.state.shared.BlockListener;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;

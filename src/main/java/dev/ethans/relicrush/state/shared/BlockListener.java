@@ -1,4 +1,4 @@
-package dev.ethans.relicrush.state.waiting;
+package dev.ethans.relicrush.state.shared;
 
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
